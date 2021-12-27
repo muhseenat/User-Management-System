@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <title>Signup page</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="logo"> <a href="https://www.freepnglogos.com/pics/hacker" title="Image from freepnglogos.com"><img src="https://www.freepnglogos.com/uploads/hacker-png/hacker-user-icons-18.png" width="200" alt="hacker user icons" /></a> </div>
+      <!-- <div class="text-center mt-4 name"> SignUp </div> -->
+      <form class=" row g-3 p-3 mt-3" action="/signup" method="post" id="contact-form">
+       
+          <div class="form-field d-flex align-items-center  col-6"> <span class="fas fa-user"></span> <input  onkeyup="nameCheck()" oninput="this.value=this.value.replace(/[^A-Za-z-,.;'&/.() ]|^ /g,'')"type="text" name="username" id="name" placeholder="Username" required>
+            <p id="name-error" style="color: black;font-style: italic;"></p>
+           </div>
+          <div class="form-field d-flex align-items-center col-6"> <span class="fas fa-envelope"></span> <input onkeyup="emailCheck()" oninput="this.value=this.value.replace(/\s/g, '')" type="email" name="email" id="email" placeholder="Email" required> 
+            <p id="email-error" style="color:black;font-style: italic;"></p></div>
+          <div class="form-field d-flex align-items-center col-6"> <span class="fas fa-phone"></span> <input  onkeyup="phoneCheck()" type="tel"  oninput="this.value=this.value.replace(/[^\d]/,'')"  name="phone" id="phone" maxlength="10" minlength="10" placeholder="Phone Number" required><p id="phone-error" style="color:black;font-style: italic;"></p>
+           </div>
+          
+
+          <div class="form-field d-flex align-items-center"> <span class="fas fa-key"></span> <input type="password" name="password" id="pwd" placeholder="Password" required> </div>
+          <div class="form-field d-flex align-items-center"> <span class="fas fa-key"></span> <input type="password" name="password2" id="pwd" placeholder=" Confirm Password" required> </div>
+          <p class="text-danger" style="color: red;"><%= error %> </p>
+         <button class="btn mt-3">SignUp</button>
+      </form>
+     
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+  <script src="/javascripts/validation.js"></script>
+
+
+
+
+
+
+  <%- include('partials/footer') %>

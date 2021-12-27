@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    
+    <div class="wrapper">
+      <div class="logo"> <a href="https://www.freepnglogos.com/pics/hacker" title="Image from freepnglogos.com"><img src="https://www.freepnglogos.com/uploads/hacker-png/hacker-user-icons-18.png" width="200" alt="hacker user icons" /></a> </div>
+      <div class="text-center mt-4 name"> Login </div>
+      <form class="p-3 mt-3" action="/user-login" method="post">
+          <div class="form-field d-flex align-items-center"> <span class="fas fa-user"></span> <input type="email" name="email" id="username" placeholder="Email" required> </div>
+          <div class="form-field d-flex align-items-center"> <span class="fas fa-key"></span> <input type="password" name="password" id="pwd" placeholder="Password" required> </div> 
+          <p style="color: red;"><%= error %> </p>
+          <button class="btn mt-3" type="submit">Login</button>
+      </form>
+     
+      <div class="text-center fs-6">Don't have an account? <a href="/user-signup">Sign up</a> </div>
+  </div>
+
+
+
+  <%- include('partials/footer') %>

@@ -1,0 +1,71 @@
+
+<%- include('partials/head.ejs') %> 
+<div class="row justify-content-center mt-5">
+  <div class="col-auto" >
+  <table class="table table-bordered table-responsive ">
+      <thead class="thead ">
+        <tr>
+          <th scope="col">Sl.No</th>
+          <th scope="col">Username</th>
+          <th scope="col">Email</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Status</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Block</th>
+          <th scope="col">Delete</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        
+        <% for( let i in data){ %> 
+        <tr>
+          <th scope="row"><%= +i+1 %> </th>
+        
+          <td><%= data[i].username %> </td>
+          <td><%= data[i].email %> </td>
+          <td><%= data[i].phone %> </td>
+          <td id="status<%=data[i]._id%>"><%= data[i].status?"Active":"Deactive"%> </td>
+          <td><a href="/admin/edit/user/<%=data[i]._id%>" class="btn btn-primary"><i class="fas fa-edit"></i></a></td>
+          <td><a id="btn<%= data[i]._id%>" class="btn <%= data[i].status?'btn-success':'btn-danger'%>" onclick="changeStatus('<%= data[i]._id%>')"><i class="fas fa-user-lock"></i></a></td>
+          <td><a href="/admin/delete/user/<%=data[i]._id%>" class="btn btn-danger" onclick=" return confirm('Really want to delete <%= i.username %>?')"><i class="fas fa-user-minus"></i></a></td>
+  
+        </tr>
+        <% } %> 
+      </tbody>
+  </table>
+</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script  defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+ function changeStatus(id){
+
+   $.ajax({
+     url:"/admin/status/user/"+id,
+     method:'GET',
+     success:(resp)=>{
+      let status= document.getElementById('status'+id);
+      let btn=document.getElementById('btn'+id);
+      if(resp.status){
+        status.innerHTML='Active',
+        btn.classList.remove('btn-danger');
+        btn.classList.add('btn-success');
+      }else{
+        status.innerHTML='Deactive',
+        btn.classList.remove('btn-success'),
+        btn.classList.add('btn-danger')
+      }
+     },
+     error:(err=>console.log(err))
+   })
+ }
+
+
+</script>
+
+  
+
+<%- include('partials/footer') %>
